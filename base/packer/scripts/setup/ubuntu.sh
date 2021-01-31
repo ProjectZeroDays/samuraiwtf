@@ -18,7 +18,7 @@ curl='curl -fsSL'
 #initial url
 current_release="$($curl 'http://cdimage.ubuntu.com/netboot/' | grep href | grep Ubuntu | grep -oP '\d{2}\.\d{2}' | sort | tail -n 1)"
 current_release_base_url="http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/${current_release}/release"
-downloadUrl="${current_release_base_url}/$($curl "${current_release_base_url}/" | grep icons | sed -n '/href=".*server-amd64.iso"/p' | awk -F'["]' '{print $8}')"
+downloadUrl="${current_release_base_url}/$($curl "${current_release_base_url}/" | grep icons | sed -n '/href=".*server-amd64.iso"/p' | grep -oP '(?<=href=")[\w\-\.]+')"
 echo "${downloadUrl}"
 # base url
 baseUrl="$(echo "${downloadUrl}" | rev | cut -d '/' -f 2- | rev)"
