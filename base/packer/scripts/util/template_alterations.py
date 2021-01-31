@@ -307,4 +307,4 @@ if __name__ == "__main__":
 
     # writing out to file
     with open('samurai.json', 'w', encoding='utf-8') as f:
-        json.dump(updated_obj, f, ensure_ascii=False, indent=4)
+        json.dump(updated_obj, f, ensure_ascii=False, indent=2)
