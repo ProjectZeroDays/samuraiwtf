@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# http://elrey.casa/bash/scripting/harden
+set -${-//[sc]/}eu${DEBUG+xv}o pipefail
+
 echo "Vagrant Provisioning for Ubuntu"
 
 echo "Command line"
@@ -104,6 +107,7 @@ systemctl enable samurai-katana
 
 # Run the chosen bundle
 echo "Running chosen bundle"
-cp /vagrant/bundles/${bundle}.sh /tmp
-. /tmp/${bundle}.sh
+cp "/vagrant/bundles/${bundle}.sh" /tmp
+# shellcheck disable=SC1090
+. "/tmp/${bundle}.sh"
 
