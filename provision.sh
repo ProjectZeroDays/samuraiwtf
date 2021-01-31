@@ -72,19 +72,19 @@ chmod a+x /usr/bin/prepare-for-distribution.sh
 
 echo "Installing Katana launcher..."
 rm -f /usr/bin/katana
-cat <<EOT >> /usr/bin/katana
+cat >> /usr/bin/katana <<'EOF'
 #!/usr/bin/bash
-if [[ "\$1" = "--update" ]]; then
+if [[ "$1" = "--update" ]]; then
   echo "Updating Katana..."
   BRANCH="master"
-  if [[ -n "\$2" ]] ; then
-    BRANCH="\$2"
+  if [[ -n "$2" ]] ; then
+    BRANCH="$2"
   fi
   sudo rm -rf /tmp/katana
   pushd /tmp
   sudo rm -rf /tmp/katana
-  echo "Cloning repository branch '\$BRANCH'"
-  sudo git clone --depth=1 --single-branch --branch \$BRANCH https://github.com/SamuraiWTF/katana.git || exit
+  echo "Cloning repository branch '$BRANCH'"
+  sudo git clone --depth=1 --single-branch --branch $BRANCH https://github.com/SamuraiWTF/katana.git || exit
   sudo mkdir -p /opt/katana
   sudo cp -R /tmp/katana/* /opt/katana/
   sudo chown -R samurai:root /opt/katana
@@ -94,9 +94,9 @@ if [[ "\$1" = "--update" ]]; then
   echo "Update is complete."
 else
   cd /opt/katana
-  sudo python3 ./katanacli.py "\$@"
+  sudo python3 ./katanacli.py "$@"
 fi
-EOT
+EOF
 chmod 777 /usr/bin/katana
 
 su -c "/usr/bin/katana --update"
