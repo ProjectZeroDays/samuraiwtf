@@ -25,12 +25,6 @@
         - ansible
       update_cache: yes
 
-  - name: Create samurai user
-    user:
-      name: samurai
-      password: $1$xyz$YXFPLFW0zK.jHG/.VMUbD/
-      groups: 'sudo'
-
   - name: Copy configuration files to opt/samurai
     unarchive:
       src: /tmp/config.tgz
@@ -115,6 +109,15 @@
       - main_folder: '/opt'
 
     
+  - name: Create samurai user
+    user:
+      name: samurai
+      password: $1$xyz$YXFPLFW0zK.jHG/.VMUbD/
+      groups:
+        - sudo
+        - docker
+      shell: /bin/bash
+
   - import_tasks: menu-tasks.yml
 
 
