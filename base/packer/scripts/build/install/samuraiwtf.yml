@@ -115,7 +115,6 @@
       password: $1$xyz$YXFPLFW0zK.jHG/.VMUbD/
       groups:
         - sudo
-        - docker
       shell: /bin/bash
 
   - import_tasks: menu-tasks.yml
