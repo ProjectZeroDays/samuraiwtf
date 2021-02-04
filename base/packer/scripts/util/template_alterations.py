@@ -137,6 +137,15 @@ def builders_alterations(json_obj):
     # returning altered object
     return json_obj
 
+def prov_chown_dir(user):
+    prov_json = {
+        'type': 'shell',
+        'inline': [
+            "sudo chown -R {newuser}:{newuser} /opt/".format(newuser=user)
+        ]
+    }
+    return prov_json
+
 def prov_alterations(json_obj):
 
     # starting section by logging name
@@ -187,15 +196,15 @@ def prov_alterations(json_obj):
     for my_script in my_scripts_list:
         bento_prov['scripts'].append(my_script)
 
-    ### need to add the following provisions
-    ## FILE: upload compressed config files to /tmp
+    prov_list.append(prov_chown_dir('vagrant'))
     prov_list.append(
         {
             'type': 'file',
-            'source': '{}/config.tgz'.format(config_dir),
-            'destination': '/tmp/config.tgz'
+            'source': '{}/config'.format(config_dir),
+            'destination': '/opt/'
         }
     )
+    prov_list.append(prov_chown_dir('root'))
 
     ### need to add the following provisions
     ## FILE: upload compressed config files to /tmp
