@@ -199,13 +199,13 @@ def prov_alterations(json_obj):
 
     ### need to add the following provisions
     ## FILE: upload compressed config files to /tmp
-    prov_list.append(
-        {
-            'type': 'file',
-            'source': '{}/katana.tgz'.format(katana_dir),
-            'destination': '/tmp/katana.tgz'
-        }
-    )
+    # prov_list.append(
+    #     {
+    #         'type': 'file',
+    #         'source': '{}/katana.tgz'.format(katana_dir),
+    #         'destination': '/tmp/katana.tgz'
+    #     }
+    # )
 
     ## ANSIBLE: run all the samurai scripts
     prov_list.append(
