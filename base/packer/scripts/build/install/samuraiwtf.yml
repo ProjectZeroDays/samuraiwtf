@@ -26,10 +26,11 @@
       update_cache: yes
 
   - name: Copy configuration files to opt/samurai
-    unarchive:
-      src: /tmp/config.tgz
+    copy:
+      src: /opt/config/opt/samurai
       dest: /opt/
       mode: 0744
+      remote_src: yes
 
   - name: Install dconf
     apt:
