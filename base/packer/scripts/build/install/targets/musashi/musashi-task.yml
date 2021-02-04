@@ -9,6 +9,20 @@
   yarn:
     path: /opt/targets/musashi
 
+- name: Generate musashi .env file
+  copy:
+    dest: /opt/targets/musashi/.env
+    content: |
+      CORS_API_PORT=3020
+      CORS_API_HOST=api.cors.dem
+      CORS_CLIENT_HOST=cors-dojo.wtf
+      CORS_CLIENT_PORT=3021
+      OAUTH_PROVIDER_PORT=3030
+      OAUTH_CLIENT_PORT=3031
+      CSP_APP_PORT=3041
+      USE_TLS=FALSE
+    mode: 0744
+    force: yes
 
 - name: Script to start Musashi
   copy:
@@ -74,6 +88,26 @@
         server_name api.cors.dem;
         location / {
           proxy_pass http://localhost:3020;
+        }
+      }
+    mode: 0644
+  notify:
+    - restart nginx
+    
+- name: Setup hosts file entries
+  lineinfile:
+    dest: /etc/hosts
+    line: '127.0.0.10   csp-dojo.wtf'
+     
+- name: Setup nginx reverse-proxy config for CSP API
+  copy:
+    dest: /etc/nginx/conf.d/musashi-csp-api.conf
+    content: |
+      server {
+        listen 80;
+        server_name csp-dojo.wtf;
+        location / {
+          proxy_pass http://localhost:3041;
         }
       }
     mode: 0644
