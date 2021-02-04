@@ -34,7 +34,6 @@ scripts/util/template_alterations.py
 # folders to compress
 folder_array=(
   './scripts/build/:config'
-  '../../:katana'
 )
 
 for array_item in "${folder_array[@]}" ; do
