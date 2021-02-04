@@ -17,6 +17,7 @@ config/home/Burp*
 # packer folders
 packer_cache/
 output-*-iso/
+packer-*/
 
 # log + tmp files
 *.swp
