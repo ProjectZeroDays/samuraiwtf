@@ -31,12 +31,6 @@
       dest: /opt/
       mode: 0744
 
-  - name: Copy katana files to opt/samurai
-    unarchive:
-      src: /tmp/katana.tgz
-      dest: /opt/
-      mode: 0744
-
   - name: Install dconf
     apt:
       name: 
