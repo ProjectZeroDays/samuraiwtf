@@ -21,7 +21,7 @@ For example, an instructor could use SamuraiWTF to easily set up a classroom vir
 
 This project includes and uses the [Samurai Katana][samurai-katana-url] project to manage installation and running of tools and targets in the virtual environment. 
 
-**Want to chat with us? Join us in either the OWASP Slack #project-samuraiwtf channel or visit us in [Professionally Evil slack][samurai-slack-url].**
+**Want to chat with us? Join us in either the OWASP Slack #project-samuraiwtf channel.**
 
 **Want to Contribute? See [here](#Contributors)**
 
@@ -127,5 +127,4 @@ Contributors are very welcome and the contribution process is standard:
   
 Substantial or *Regular* contributors may also be brought in as full team members. This includes those who have made substantial contributions to previous versions of SamuraiWTF with the assumption they will continue to do so.
 
-[samurai-slack-url]: https://professionallyevil.slack.com/messages/samuraiwtf
 [samurai-katana-url]: https://github.com/SamuraiWTF/katana
